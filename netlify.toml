@@ -1,0 +1,7 @@
+[build]
+  command = "npx @11ty/eleventy --input=src --output=_site"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--no-audit --no-fund"

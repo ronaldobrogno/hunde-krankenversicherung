@@ -1,38 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
   {% include "partials/head-meta.njk" %}
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-<header class="header">
-  <div class="container header-inner">
-    <a class="logo" href="/">{{ site.name }}</a>
-    <nav aria-label="Hauptnavigation">
-      <a href="/leistungen/">Leistungen</a>
-      <a href="/preise/">Preise</a>
-      <a href="/faq/">FAQ</a>
-      <a class="cta" href="{{ site.ctaLink }}" rel="nofollow noopener">Jetzt abschließen</a>
-    </nav>
-  </div>
-</header>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="/">{{ site.name }}</a>
+      <nav aria-label="Hauptnavigation">
+        <a href="/leistungen/">Leistungen</a>
+        <a href="/preise/">Preise</a>
+        <a href="/faq/">FAQ</a>
+        <a class="cta" href="{{ site.ctaLink }}" rel="nofollow noopener">Jetzt abschließen</a>
+      </nav>
+    </div>
+  </header>
 
-<main class="container">
-  {{ content | safe }}
-</main>
+  <main class="container">
+    {{ content | safe }}
+  </main>
 
-<footer class="footer">
-  <div class="container">© {{ "now" | date("yyyy") }} {{ site.name }} · <a href="/rassen/">Hunderassen A–Z</a></div>
-</footer>
-
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Organization",
-  "name":"{{ site.name }}",
-  "url":"{{ site.url or '' }}",
-  "sameAs":[]
-}
-</script>
+  <footer class="footer">
+    <div class="container">
+      © {{ "now" | date("yyyy") }} {{ site.name }} · 
+      <a href="/rassen/">Hunderassen A–Z</a>
+    </div>
+  </footer>
 </body>
 </html>

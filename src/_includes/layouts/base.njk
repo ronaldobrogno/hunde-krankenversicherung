@@ -4,7 +4,7 @@
   {% include "partials/head-meta.njk" %}
   <style>
     :root{
-      --primary:#0072ce; /* Barmenia-Blau */
+      --primary:#0072ce;
       --primary-dark:#005fa3;
       --ink:#1a2a33;
       --bg:#f4faff;
@@ -16,7 +16,7 @@
     body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
     header{background:linear-gradient(0deg,var(--primary-dark),var(--primary));color:#fff}
     .wrap{max-width:1120px;margin:0 auto;padding:12px 20px}
-    .brand{display:flex;align-items:center;gap:14px}
+    .brand{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
     .brand a{color:#fff;text-decoration:none;font-weight:800;font-size:1.25rem}
     nav a{color:#eaf4ff;text-decoration:none;margin-left:14px;font-weight:600}
     nav a:hover{text-decoration:underline}
@@ -41,6 +41,7 @@
           <a href="/preise/">Preise</a>
           <a href="/faq/">FAQ</a>
           <a href="/kontakt/">Kontakt</a>
+          <a class="cta" href="{{ site.ctaLink }}" rel="nofollow noopener">Jetzt abschließen</a>
         </nav>
       </div>
     </div>

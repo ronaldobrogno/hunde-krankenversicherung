@@ -1,23 +1,43 @@
-{% set pageTitle = title ? (title + " | " + site.name) : site.name %}
-{% set pageDesc  = metaDescription or site.description %}
-{% set pageUrl   = (site.url and site.url != "") ? (site.url + page.url) : page.url %}
+{# ===== Variablen sauber ermitteln (ohne Ternary) ===== #}
+{% if title %}
+  {% set pageTitle = title + " | " + site.name %}
+{% else %}
+  {% set pageTitle = site.name %}
+{% endif %}
 
+{% if metaDescription %}
+  {% set pageDesc = metaDescription %}
+{% else %}
+  {% set pageDesc = site.description %}
+{% endif %}
+
+{% if site and site.url %}
+  {% set pageUrl = site.url + page.url %}
+{% else %}
+  {% set pageUrl = page.url %}
+{% endif %}
+
+{# ===== Head / SEO ===== #}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>{{ pageTitle }}</title>
 <meta name="description" content="{{ pageDesc }}">
 <link rel="canonical" href="{{ pageUrl }}">
+<meta name="robots" content="index,follow,max-image-preview:large">
 
+{# Open Graph #}
 <meta property="og:type" content="website">
-<meta property="og:locale" content="{{ site.locale }}">
+<meta property="og:locale" content="{{ site.locale or 'de_DE' }}">
 <meta property="og:title" content="{{ pageTitle }}">
 <meta property="og:description" content="{{ pageDesc }}">
 <meta property="og:url" content="{{ pageUrl }}">
 <meta property="og:site_name" content="{{ site.name }}">
 
+{# Twitter #}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ pageTitle }}">
 <meta name="twitter:description" content="{{ pageDesc }}">
 
+{# Performance-Touch #}
 <link rel="preconnect" href="https://www.barmenia.de" crossorigin>
-<meta name="robots" content="index,follow,max-image-preview:large">

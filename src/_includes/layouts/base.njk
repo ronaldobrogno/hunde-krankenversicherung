@@ -3,110 +3,57 @@
 <head>
   {% include "partials/head-meta.njk" %}
   <style>
-    :root {
-      --primary: #0072ce; /* Barmenia-Blau */
-      --secondary: #005fa3;
-      --light: #f4faff;
-      --dark: #333;
+    :root{
+      --primary:#0072ce; /* Barmenia-Blau */
+      --primary-dark:#005fa3;
+      --ink:#1a2a33;
+      --bg:#f4faff;
+      --card:#ffffff;
+      --border:#e6eef5;
     }
-
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background: var(--light);
-      color: var(--dark);
-    }
-
-    header {
-      background: var(--primary);
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-
-    nav {
-      margin-top: 0.5rem;
-    }
-
-    nav a {
-      color: #fff;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 2rem;
-      background: #fff;
-    }
-
-    h2 {
-      color: var(--primary);
-    }
-
-    .highlight {
-      background: var(--light);
-      padding: 1.5rem;
-      border-left: 5px solid var(--primary);
-      margin: 1.5rem 0;
-    }
-
-    .cta {
-      display: inline-block;
-      background: var(--primary);
-      color: #fff;
-      padding: 0.8rem 1.5rem;
-      margin-top: 1rem;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-      transition: background 0.3s ease;
-    }
-
-    .cta:hover {
-      background: var(--secondary);
-    }
-
-    footer {
-      background: var(--primary);
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+    header{background:linear-gradient(0deg,var(--primary-dark),var(--primary));color:#fff}
+    .wrap{max-width:1120px;margin:0 auto;padding:12px 20px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand a{color:#fff;text-decoration:none;font-weight:800;font-size:1.25rem}
+    nav a{color:#eaf4ff;text-decoration:none;margin-left:14px;font-weight:600}
+    nav a:hover{text-decoration:underline}
+    main.wrap{padding:24px 20px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
+    .grid-2{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+    .highlight{background:#eaf4ff;border-left:5px solid var(--primary);padding:16px;border-radius:8px}
+    .cta{display:inline-block;background:var(--primary);color:#fff;padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none}
+    .cta:hover{background:var(--primary-dark)}
+    footer{background:#0e4f87;color:#dff0ff}
+    footer .wrap{padding:18px 20px}
+    @media(max-width:900px){.grid-2{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <header>
-    <h1>{{ site.name }}</h1>
-    <nav>
-      <a href="/">Startseite</a>
-      <a href="/leistungen/">Leistungen</a>
-      <a href="/preise/">Preise</a>
-      <a href="/faq/">FAQ</a>
-      <a href="/kontakt/">Kontakt</a>
-    </nav>
+    <div class="wrap">
+      <div class="brand">
+        <a href="/">{{ site.name }}</a>
+        <nav aria-label="Hauptnavigation">
+          <a href="/leistungen/">Leistungen</a>
+          <a href="/preise/">Preise</a>
+          <a href="/faq/">FAQ</a>
+          <a href="/kontakt/">Kontakt</a>
+        </nav>
+      </div>
+    </div>
   </header>
 
-  <main class="container">
+  <main class="wrap">
     {{ content | safe }}
   </main>
 
   <footer>
-    <p>&copy; {{ site.year }} {{ site.name }} – Hunde-Krankenversicherung powered by Barmenia</p>
+    <div class="wrap">
+      © {{ site.year }} {{ site.name }} · <a style="color:#fff;text-decoration:underline" href="/rassen/">Hunderassen A–Z</a>
+    </div>
   </footer>
 </body>
 </html>

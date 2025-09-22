@@ -1,60 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
   {% include "partials/head-meta.njk" %}
-  <style>
-    :root{
-      --primary:#0072ce;
-      --primary-dark:#005fa3;
-      --ink:#1a2a33;
-      --bg:#f4faff;
-      --card:#ffffff;
-      --border:#e6eef5;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0}
-    body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
-    header{background:linear-gradient(0deg,var(--primary-dark),var(--primary));color:#fff}
-    .wrap{max-width:1120px;margin:0 auto;padding:12px 20px}
-    .brand{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-    .brand a{color:#fff;text-decoration:none;font-weight:800;font-size:1.25rem}
-    nav a{color:#eaf4ff;text-decoration:none;margin-left:14px;font-weight:600}
-    nav a:hover{text-decoration:underline}
-    main.wrap{padding:24px 20px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
-    .grid-2{display:grid;gap:16px;grid-template-columns:1fr 1fr}
-    .highlight{background:#eaf4ff;border-left:5px solid var(--primary);padding:16px;border-radius:8px}
-    .cta{display:inline-block;background:var(--primary);color:#fff;padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none}
-    .cta:hover{background:var(--primary-dark)}
-    footer{background:#0e4f87;color:#dff0ff}
-    footer .wrap{padding:18px 20px}
-    @media(max-width:900px){.grid-2{grid-template-columns:1fr}}
-  </style>
+  <link rel="preload" href="/css/styles.css" as="style">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' x='6' font-size='52'%3E%F0%9F%90%B6%3C/text%3E%3C/svg%3E">
 </head>
 <body>
-  <header>
+  <!-- Top Notice / Vertrauen -->
+  <div class="notice">
     <div class="wrap">
-      <div class="brand">
-        <a href="/">{{ site.name }}</a>
-        <nav aria-label="Hauptnavigation">
-          <a href="/leistungen/">Leistungen</a>
-          <a href="/preise/">Preise</a>
-          <a href="/faq/">FAQ</a>
-          <a href="/kontakt/">Kontakt</a>
-          <a class="cta" href="{{ site.ctaLink }}" rel="nofollow noopener">Jetzt abschließen</a>
-        </nav>
-      </div>
+      ❤️ Für Hunde gemacht: fairer Schutz, schneller Abschluss, echte Hilfe im Ernstfall.
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">🐶</span>
+        <span class="brand-text">{{ site.name }}</span>
+      </a>
+
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="/leistungen/">Leistungen</a>
+        <a href="/preise/">Preise</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/kontakt/">Kontakt</a>
+        <a class="btn btn-primary" href="{{ site.ctaLink }}" rel="nofollow noopener">Jetzt abschließen</a>
+      </nav>
     </div>
   </header>
 
-  <main class="wrap">
+  <!-- Main -->
+  <main id="main" class="wrap" tabindex="-1">
     {{ content | safe }}
   </main>
 
-  <footer>
-    <div class="wrap">
-      © {{ site.year }} {{ site.name }} · <a style="color:#fff;text-decoration:underline" href="/rassen/">Hunderassen A–Z</a>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <div class="brand brand--footer">
+          <span class="brand-mark" aria-hidden="true">🐶</span>
+          <span class="brand-text">{{ site.name }}</span>
+        </div>
+        <p class="muted">Wir glauben, dass Hunde Familie sind. Darum bauen wir eine Seite, die Vertrauen schafft – mit klaren Informationen und direktem Online-Abschluss.</p>
+      </div>
+
+      <nav aria-label="Footer">
+        <h3>Navigation</h3>
+        <ul class="list">
+          <li><a href="/">Start</a></li>
+          <li><a href="/leistungen/">Leistungen</a></li>
+          <li><a href="/preise/">Preise</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/kontakt/">Kontakt</a></li>
+          <li><a href="/rassen/">Hunderassen A–Z</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h3>Direktabschluss</h3>
+        <p>Beitrag berechnen & online abschließen – schnell und sicher.</p>
+        <p><a class="btn btn-primary" href="{{ site.ctaLink }}" rel="nofollow noopener">Zum Rechner & Abschluss</a></p>
+        <p class="tiny muted">SSL-verschlüsselt · Keine Installation nötig</p>
+      </div>
+    </div>
+
+    <div class="wrap footer-bottom">
+      <small>© {{ site.year }} {{ site.name }} · Alle Rechte vorbehalten.</small>
     </div>
   </footer>
+
+  <!-- Small A11y helper: skip link target already set via tabindex on main -->
 </body>
 </html>
